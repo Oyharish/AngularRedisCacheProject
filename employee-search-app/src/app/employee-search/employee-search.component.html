@@ -1,0 +1,45 @@
+<div>
+  <h2>Employee Search</h2>
+  <div class="search-box">
+    <input type="text" [(ngModel)]="nameQuery" placeholder="Search by Name" (input)="onNameInputChange()">
+    <ul *ngIf="nameSuggestions.length > 0" class="suggestions">
+      <li *ngFor="let suggestion of nameSuggestions" (click)="onSuggestionClick('name', suggestion)">{{ suggestion }}</li>
+    </ul>
+
+    <input type="text" [(ngModel)]="ageQuery" placeholder="Search by Age" (input)="onAgeInputChange()">
+    <ul *ngIf="ageSuggestions.length > 0" class="suggestions">
+      <li *ngFor="let suggestion of ageSuggestions" (click)="onSuggestionClick('age', suggestion)">{{ suggestion }}</li>
+    </ul>
+
+    <input type="text" [(ngModel)]="addressQuery" placeholder="Search by Address" (input)="onAddressInputChange()">
+    <ul *ngIf="addressSuggestions.length > 0" class="suggestions">
+      <li *ngFor="let suggestion of addressSuggestions" (click)="onSuggestionClick('address', suggestion)">{{ suggestion }}</li>
+    </ul>
+
+    <input type="text" [(ngModel)]="salaryQuery" placeholder="Search by Salary" (input)="onSalaryInputChange()">
+    <ul *ngIf="salarySuggestions.length > 0" class="suggestions">
+      <li *ngFor="let suggestion of salarySuggestions" (click)="onSuggestionClick('salary', suggestion)">{{ suggestion }}</li>
+    </ul>
+
+    <button (click)="onSearchClick()">Search</button>
+    <button (click)="refresh()">Refresh</button>
+  </div>
+  <table class="employee-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of filteredEmployees">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.salary }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
